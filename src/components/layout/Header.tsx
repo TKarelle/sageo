@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { NAV_LINKS } from "@/lib/content/landing";
 import { Brand } from "@/components/ui/Brand";
 
@@ -28,9 +29,9 @@ export function Header() {
               {link.label}
             </a>
           ))}
-          <a className="nav-cta" href="/#liste-attente" onClick={close}>
+          <Link className="nav-cta" href="/#liste-attente" onClick={close}>
             Être prévenu gratuitement
-          </a>
+          </Link>
         </nav>
       </div>
     </header>

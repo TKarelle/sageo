@@ -1,7 +1,9 @@
+import Link from "next/link";
+
 export function MobileStickyCta() {
   return (
     <div className="mobile-sticky-cta">
-      <a href="/#liste-attente">Être prévenu gratuitement</a>
+      <Link href="/#liste-attente">Être prévenu gratuitement</Link>
     </div>
   );
 }
