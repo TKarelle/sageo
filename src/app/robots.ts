@@ -1,20 +1,24 @@
 import type { MetadataRoute } from "next";
+import { SITE_URL } from "@/lib/site";
 
 /**
- * Autorise explicitement les bots IA (AEO / GEO / RAG crawlers).
+ * Accès explicite, par famille de robots.
+ * Recherche : Googlebot, Bingbot, OAI-SearchBot, ChatGPT-User.
+ * Entraînement ou autres usages : GPTBot, Google-Extended, ClaudeBot, CCBot, Bytespider.
+ * Tous sont autorisés : le site veut être découvert et cité. Aucune page utile n’est bloquée.
  */
 export default function robots(): MetadataRoute.Robots {
   const aiBots = [
-    "GPTBot",
-    "ChatGPT-User",
-    "OAI-SearchBot",
-    "PerplexityBot",
-    "ClaudeBot",
-    "anthropic-ai",
-    "Google-Extended",
     "Googlebot",
     "Googlebot-Image",
     "Bingbot",
+    "OAI-SearchBot",
+    "ChatGPT-User",
+    "GPTBot",
+    "Google-Extended",
+    "PerplexityBot",
+    "ClaudeBot",
+    "anthropic-ai",
     "Applebot-Extended",
     "Bytespider",
     "CCBot",
@@ -31,7 +35,7 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/" as const,
       })),
     ],
-    sitemap: "https://sageolab.fr/sitemap.xml",
-    host: "https://sageolab.fr",
+    sitemap: `${SITE_URL}/sitemap.xml`,
+    host: SITE_URL,
   };
 }

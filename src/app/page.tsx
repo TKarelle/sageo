@@ -1,40 +1,43 @@
-import { HeroChunk } from "@/components/sageo/HeroChunk";
-import { WhatIsSageo } from "@/components/landing/WhatIsSageo";
-import { FourPillars } from "@/components/landing/FourPillars";
-import { PipelineStages } from "@/components/landing/PipelineStages";
-import { ComparisonMatrix } from "@/components/landing/ComparisonMatrix";
-import { ComparisonTable } from "@/components/ui/ComparisonTable";
+import type { Metadata } from "next";
+import { AudienceSection } from "@/components/landing/AudienceSection";
 import { FaqSection } from "@/components/landing/FaqSection";
-import { AuditForm } from "@/components/ui/AuditForm";
-import { RdfTuple } from "@/components/ui/SemanticChunk";
+import { FinalCta } from "@/components/landing/FinalCta";
+import { Hero } from "@/components/landing/Hero";
+import { MethodSection } from "@/components/landing/MethodSection";
+import { ScoreSection } from "@/components/landing/ScoreSection";
+import { ToolSection } from "@/components/landing/ToolSection";
+import { WaitlistSection } from "@/components/landing/WaitlistSection";
+import { WhySection } from "@/components/landing/WhySection";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { getHomeJsonLd } from "@/lib/schema";
+import { HOME_URL, SITE_DESCRIPTION, SITE_TITLE } from "@/lib/site";
 
-/**
- * Landing SSR — HTML5 sémantique + couches AEO/RAG.
- */
+export const metadata: Metadata = {
+  title: {
+    absolute: SITE_TITLE,
+  },
+  description: SITE_DESCRIPTION,
+  alternates: { canonical: HOME_URL },
+  openGraph: {
+    url: HOME_URL,
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+  },
+};
+
 export default function HomePage() {
   return (
-    <main id="contenu-principal" itemScope itemType="https://schema.org/WebPage">
-      <RdfTuple
-        subject="SAGEO Lab"
-        verb="est le laboratoire de R&D de"
-        complement="Kopio spécialisé dans le Search-Augmented Generative Engine Optimization"
-      />
-      <RdfTuple
-        subject="SAGEO Arena"
-        verb="désigne"
-        complement="le cadre méthodologique du Search-Augmented Generative Engine Optimization porté par SAGEO Lab"
-      />
-
-      <HeroChunk />
-      <WhatIsSageo />
-      <FourPillars />
-      <PipelineStages />
-      <ComparisonMatrix />
-      <ComparisonTable />
+    <main id="contenu-principal">
+      <JsonLd data={getHomeJsonLd()} />
+      <Hero />
+      <ScoreSection />
+      <MethodSection />
+      <ToolSection />
+      <WaitlistSection />
+      <WhySection />
+      <AudienceSection />
       <FaqSection />
-      <aside aria-label="Conversion B2B — audit SAGEO Lab Kopio">
-        <AuditForm />
-      </aside>
+      <FinalCta />
     </main>
   );
 }

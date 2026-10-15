@@ -1,8 +1,9 @@
 import type { MetadataRoute } from "next";
+import { SITE_UPDATED_ISO, SITE_URL } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://sageolab.fr";
-  const lastModified = new Date("2026-10-13");
+  const base = SITE_URL;
+  const lastModified = new Date(SITE_UPDATED_ISO);
 
   return [
     {
@@ -10,6 +11,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: "weekly",
       priority: 1,
+    },
+    {
+      url: `${base}/articles`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${base}/methode-sageo`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.8,
     },
     {
       url: `${base}/mentions-legales`,

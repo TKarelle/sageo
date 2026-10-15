@@ -1,17 +1,35 @@
 import type { Metadata } from "next";
 import { LegalPageShell } from "@/components/layout/LegalPageShell";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { LEGAL } from "@/lib/legal";
+import { getLegalPageJsonLd } from "@/lib/schema";
+
+const TITLE = "Mentions légales";
+const DESCRIPTION =
+  "Mentions légales du site SAGEO édité par Kopio (Karelle) — éditeur, hébergeur, contact.";
 
 export const metadata: Metadata = {
-  title: "Mentions légales",
-  description:
-    "Mentions légales du site SAGEO Lab édité par Kopio — éditeur, hébergeur, contact.",
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: { canonical: `${LEGAL.siteUrl}/mentions-legales` },
+  robots: { index: true, follow: true },
+  openGraph: {
+    title: "Mentions légales | SAGEO",
+    description: DESCRIPTION,
+    url: `${LEGAL.siteUrl}/mentions-legales`,
+  },
 };
 
 export default function MentionsLegalesPage() {
   return (
     <LegalPageShell label="Légal" title="Mentions légales">
+      <JsonLd
+        data={getLegalPageJsonLd({
+          path: "/mentions-legales",
+          name: TITLE,
+          description: DESCRIPTION,
+        })}
+      />
       <section>
         <h2 className="font-display text-xl font-medium text-slate-900">
           1. Éditeur du site
@@ -43,9 +61,10 @@ export default function MentionsLegalesPage() {
           <li>Directeur de la publication : {LEGAL.publicationDirector}</li>
         </ul>
         <p className="mt-3 text-slate-500">
-          SAGEO Lab désigne le centre de recherche de {LEGAL.editor} dédié au
-          Search-Augmented Generative Engine Optimization (SAGEO), au GEO France
-          et à l&apos;Optimisation LLM.
+          SAGEO (Search-Augmented Generative Engine Optimization) est la
+          méthode de {LEGAL.editor}, par Karelle. Elle relie le SEO, l&apos;AEO
+          et le GEO pour qu&apos;une page soit trouvée, comprise, puis
+          éventuellement citée. Une citation n&apos;est pas garantie.
         </p>
       </section>
 
@@ -100,8 +119,11 @@ export default function MentionsLegalesPage() {
           5. Données personnelles
         </h2>
         <p className="mt-3">
-          Le traitement des données personnelles collectées via le formulaire
-          d&apos;audit est décrit dans la{" "}
+          Le formulaire de liste d&apos;attente collecte une adresse e-mail pour
+          prévenir de la sortie de l&apos;extension Chrome gratuite et envoyer
+          la newsletter, avec le consentement de la personne. Les échanges par
+          e-mail et les journaux techniques de l&apos;hébergeur sont décrits
+          dans la{" "}
           <a
             href="/politique-confidentialite"
             className="font-medium text-blue-600 hover:underline"

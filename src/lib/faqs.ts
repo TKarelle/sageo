@@ -1,57 +1,49 @@
-/**
- * FAQ AEO — réponses directes 30–45 mots (Position 0) + détail RAG.
- * Source unique pour UI SSR et JSON-LD FAQPage.
- */
+export type FaqItem = {
+  question: string;
+  answer: string;
+};
 
-export const FAQS = [
+/** FAQ landing — source unique pour UI + JSON-LD. */
+export const FAQS: FaqItem[] = [
   {
-    id: "apparaitre-chatgpt-perplexity-gemini",
-    q: "Comment apparaître dans les réponses de ChatGPT Search, Perplexity et Gemini ?",
-    direct:
-      "Pour être cité par ChatGPT Search, Perplexity et Gemini, un site doit être rendu en SSR et découpé en micro-chunks factuels. SAGEO Lab (Kopio) aligne le contenu sur BM25, Cross-Encoder Reranking et ancrage sans hallucination.",
-    detail:
-      "Les moteurs comme ChatGPT Search et Perplexity ne lisent pas un site comme un humain : ils découpent les pages en extraits vectoriels (chunks) avant le Cross-Encoder Reranking. Si vos informations clés ne sont pas isolées dans des blocs autonomes de 120 à 180 mots avec des données chiffrées précises, elles sont éliminées au Stage 2 RAG. La méthode SAGEO (Search-Augmented Generative Engine Optimization) formalisée par SAGEO Lab et Kopio structure chaque passage pour maximiser le score de reranking et la citation Stage 3.",
+    question: "Qu’est-ce que la visibilité sur ChatGPT ?",
+    answer:
+      "C’est la possibilité qu’un site, une marque ou un contenu soit mentionné ou utilisé comme source dans une réponse. Cela dépend de nombreux facteurs et ne peut pas être garanti.",
   },
   {
-    id: "difference-seo-geo",
-    q: "Quelle est la différence entre le SEO et le GEO (Generative Engine Optimization) ?",
-    direct:
-      "Le SEO classe une page dans les liens Google via mots-clés et backlinks. Le GEO vise la citation d'une marque dans la réponse d'une IA. SAGEO étend le GEO France avec Retrieval hybride, Cross-Encoder Reranking et grounding LLM.",
-    detail:
-      "Alors que le SEO classique se concentre sur les clics SERP, le GEO et le SAGEO ciblent les citations d'autorité dans les réponses génératives. En 2026, avec les AI Overviews et ChatGPT Search, le trafic B2B ne provient plus uniquement du classement sur des mots-clés bruts, mais de la présence de votre marque comme source recommandée. SAGEO Lab, centre de recherche de Kopio, formalise cette transition pour le GEO France et l'Optimisation LLM via un pipeline Retrieval → Rerank → Grounding.",
+    question: "Comment être cité par ChatGPT ?",
+    answer:
+      "Il n’existe pas de formule universelle. Des contenus clairs, fiables, utiles et bien structurés peuvent contribuer à une meilleure compréhension de votre expertise.",
   },
   {
-    id: "n1-google-invisible-ia",
-    q: "Pourquoi mon site est n°1 sur Google mais invisible sur Perplexity ou ChatGPT ?",
-    direct:
-      "Un classement Google n°1 n'implique pas une présence IA : les LLM utilisent un Cross-Encoder Reranker qui écarte le texte trop long ou promotionnel. Seuls les segments à forte densité factuelle passent le Stage 2 RAG.",
-    detail:
-      "Une page #1 sur Google contient souvent du texte rédigé pour allonger la durée de lecture ou capter la longue traîne. Pour un moteur RAG (Retrieval-Augmented Generation), ce surplus est du bruit algorithmique. Sans réorganisation SAGEO des données — micro-chunks, tableaux et tuples RDF — l'IA rejette la source au profit de concurrents plus synthétiques. SAGEO Lab (Kopio) restructure le contenu pour franchir BM25, Cross-Encoder Reranking et grounded generation.",
+    question: "Quelle est la différence entre SEO, GEO et AEO ?",
+    answer:
+      "Le SEO concerne le référencement naturel, l’AEO l’organisation de réponses aux questions et le GEO l’optimisation dans les environnements génératifs. Ces approches sont complémentaires.",
   },
   {
-    id: "prix-audit-sageo-france",
-    q: "Quel est le prix d'un audit ou d'une prestation SAGEO en France ?",
-    direct:
-      "En France, un Audit SAGEO coûte généralement entre 2 500 € et 6 000 € selon la taille du site. L'accompagnement SAGEO Lab (Kopio) varie de 3 000 € à 8 000 € par mois pour l'optimisation RAG continue.",
-    detail:
-      "L'investissement comprend l'analyse Query Fan-Out, l'assainissement HTML/SSR, la restructuration en micro-chunks de 120 à 180 mots, l'injection de schémas JSON-LD (ResearchOrganization, DefinedTerm, FAQPage) et le suivi des taux de citation sur ChatGPT, Perplexity, Gemini et Google AI Overviews. SAGEO Lab, laboratoire de R&D de Kopio, délivre cette prestation pour le GEO France et l'Optimisation LLM.",
+    question: "Faut-il être une entreprise pour utiliser SAGEO ?",
+    answer:
+      "Non. La méthode peut servir aux indépendants, créateurs, associations et particuliers qui souhaitent structurer leur présence en ligne.",
   },
   {
-    id: "seo-disparait-ia",
-    q: "Est-ce que le SEO traditionnel va disparaître avec l'IA ?",
-    direct:
-      "Non : le SEO traditionnel devient le socle technique du SAGEO. Les moteurs IA utilisent encore l'indexation BM25 pour sélectionner les 100 pages candidates avant Cross-Encoder Reranking et synthèse grounded.",
-    detail:
-      "Sans SEO technique irréprochable — vitesse, rendu serveur SSR, maillage interne, balises canonical — les scrapers GPTBot, PerplexityBot et ClaudeBot ne peuvent pas crawler votre site. Le SEO reste la porte d'entrée Sparse Retrieval ; le Search-Augmented Generative Engine Optimization (SAGEO) formalisé par SAGEO Lab et Kopio garantit que vous franchissez le filtre de reranking et obtenez la citation Stage 3.",
+    question: "L’extension est-elle nécessaire pour appliquer la méthode ?",
+    answer:
+      "Non. L’extension facilite certaines analyses, mais les principes de la méthode peuvent être appliqués sans elle.",
   },
   {
-    id: "mesurer-visibilite-moteurs-generatifs",
-    q: "Comment mesurer la visibilité de sa marque sur les moteurs génératifs ?",
-    direct:
-      "La visibilité IA se mesure via le Taux de Citation Canonique (TCC) et le Score d'Ancrage Factuel sur 50 à 100 sous-requêtes sectorielles. SAGEO Lab (Kopio) suit si votre marque est citée, comparée ou ignorée au Reranking.",
-    detail:
-      "Contrairement à Google Search Console qui mesure clics et impressions, le suivi SAGEO écoute les réponses des agents conversationnels pour qualifier la citation : leader, concurrent ou absence au Stage 2. Cette métrique oriente le Micro-Chunking, le balisage Schema.org et l'ancrage d'entité. SAGEO Lab applique ce protocole pour le GEO France et l'Optimisation LLM auprès des marques B2B.",
+    question:
+      "L’extension montre-t-elle toutes les recherches internes de ChatGPT ?",
+    answer:
+      "Non. Elle ne détecte que certaines données accessibles lorsqu’elles sont disponibles. Les résultats ne sont pas exhaustifs.",
   },
-] as const;
-
-export type FaqItem = (typeof FAQS)[number];
+  {
+    question: "L’utilisation de SAGEO garantit-elle une citation ?",
+    answer:
+      "Non. SAGEO aide à analyser et améliorer certains éléments de vos pages, mais aucune citation ne peut être garantie.",
+  },
+  {
+    question: "SAGEO remplace-t-il le référencement naturel ?",
+    answer:
+      "Non. Le référencement naturel reste un socle important de la visibilité sur le Web.",
+  },
+];

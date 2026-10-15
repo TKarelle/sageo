@@ -1,92 +1,73 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Newsreader } from "next/font/google";
+import { DM_Sans, Manrope } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { MobileStickyCta } from "@/components/layout/MobileStickyCta";
-import { getGlobalJsonLd, serializeJsonLd } from "@/lib/schema";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { getSiteJsonLd } from "@/lib/schema";
+import { HOME_URL, SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "@/lib/site";
 import "./globals.css";
+import "./sageo-landing.css";
+import "./mockup.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
   subsets: ["latin"],
   display: "swap",
+  weight: ["400", "500", "600", "700"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
   display: "swap",
-});
-
-const newsreader = Newsreader({
-  variable: "--font-display",
-  subsets: ["latin"],
-  display: "swap",
-  style: ["normal", "italic"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://sageolab.fr"),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "SAGEO Lab — Search-Augmented Generative Engine Optimization | Kopio",
-    template: "%s | SAGEO Lab",
+    default: SITE_TITLE,
+    template: "%s | SAGEO",
   },
-  description:
-    "SAGEO Lab est le centre de recherche de Kopio sur le Search-Augmented Generative Engine Optimization, le GEO France et l'Optimisation LLM.",
-  keywords: [
-    "SAGEO",
-    "SAGEO Lab",
-    "SAGEO Arena",
-    "Search-Augmented Generative Engine Optimization",
-    "Kopio",
-    "GEO France",
-    "Optimisation LLM",
-    "Cross-Encoder Reranking",
-    "ChatGPT Search",
-    "Perplexity",
-    "BM25",
-    "RAG",
+  description: SITE_DESCRIPTION,
+  authors: [
+    { name: "Karelle", url: "https://kopio.eu" },
+    { name: "Kopio", url: "https://kopio.eu" },
   ],
-  authors: [{ name: "Kopio", url: "https://kopio.eu" }],
-  creator: "Kopio",
-  publisher: "SAGEO Lab",
-  alternates: {
-    canonical: "https://sageolab.fr/",
-  },
+  creator: "Karelle — Kopio",
+  publisher: "SAGEO",
   openGraph: {
     type: "website",
     locale: "fr_FR",
-    url: "https://sageolab.fr/",
-    siteName: "SAGEO Lab",
-    title: "SAGEO Lab — Search-Augmented Generative Engine Optimization",
-    description:
-      "SAGEO Lab documente le pipeline RAG à trois stages pour le GEO France et l'Optimisation LLM. Édité par Kopio.",
+    url: HOME_URL,
+    siteName: "SAGEO",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
     images: [
       {
-        url: "/hero.jpeg",
-        width: 1200,
-        height: 630,
-        alt: "Pipeline Neural Network Vector Reranking — SAGEO Lab",
+        url: "/og-image.jpeg",
+        width: 1376,
+        height: 768,
+        alt: "Visuel abstrait : sphère de points bleus sur fond sombre",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "SAGEO Lab — SAGEO by Kopio",
-    description:
-      "Search-Augmented Generative Engine Optimization : Retrieval, Rerank, Grounding.",
-    images: ["/herosageo.jpeg"],
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    images: ["/og-image.jpeg"],
   },
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-      "max-video-preview": -1,
-    },
+  },
+  icons: {
+    icon: [{ url: "/logo-venn.svg", type: "image/svg+xml", sizes: "any" }],
+  },
+  other: {
+    "theme-color": "#f8fafc",
   },
 };
 
@@ -95,19 +76,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const jsonLd = getGlobalJsonLd();
-
   return (
     <html lang="fr">
       <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
-        />
+        <JsonLd data={getSiteJsonLd()} />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${newsreader.variable} relative font-sans`}
-      >
+      <body className={`${dmSans.variable} ${manrope.variable}`}>
         <Header />
         {children}
         <Footer />

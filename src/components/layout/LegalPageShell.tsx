@@ -7,23 +7,25 @@ type Props = {
   children: ReactNode;
 };
 
-/**
- * Shell pages légales — même language premium que le site.
- */
 export function LegalPageShell({ title, label, children }: Props) {
   return (
-    <main className="relative mx-auto max-w-3xl px-4 py-24 sm:px-6 lg:px-8 lg:py-28">
-      <p className="section-label">{label}</p>
-      <h1 className="section-title">{title}</h1>
-      <div className="prose-legal mt-10 space-y-8 text-sm leading-relaxed text-slate-600 sm:text-base">
+    <main className="section-wrap py-16 sm:py-20">
+      <nav className="breadcrumb" aria-label="Fil d’Ariane">
+        <ol>
+          <li>
+            <Link href="/">Accueil</Link>
+          </li>
+          <li aria-current="page">{title}</li>
+        </ol>
+      </nav>
+      <span className="eyebrow">{label}</span>
+      <h1>{title}</h1>
+      <div className="mt-8 space-y-6 text-[13px] leading-relaxed text-[#566174] [&_a]:font-semibold [&_a]:text-[#111a28] [&_h2]:mb-3 [&_h2]:mt-8 [&_h2]:text-lg [&_h2]:font-bold [&_h2]:text-[#172033] [&_ul]:list-disc [&_ul]:space-y-1 [&_ul]:pl-5">
         {children}
       </div>
       <p className="mt-12">
-        <Link
-          href="/"
-          className="text-sm font-semibold text-blue-600 transition hover:text-blue-700"
-        >
-          ← Retour à SAGEO Lab
+        <Link href="/" className="btn btn-light !gap-2">
+          ← Retour à SAGEO
         </Link>
       </p>
     </main>

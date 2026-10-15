@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" fill="none" role="img" aria-label="SAGEO">
+  <defs>
+    <radialGradient id="mint" cx="50%" cy="42%" r="72%">
+      <stop offset="0%" stop-color="#e7fff8" stop-opacity="0.55"/>
+      <stop offset="34%" stop-color="#5ad4c4" stop-opacity="0.72"/>
+      <stop offset="72%" stop-color="#49c8b6" stop-opacity="0.62"/>
+      <stop offset="100%" stop-color="#b6fff0" stop-opacity="0.22"/>
+    </radialGradient>
+    <radialGradient id="blue" cx="44%" cy="56%" r="72%">
+      <stop offset="0%" stop-color="#eaf5ff" stop-opacity="0.5"/>
+      <stop offset="36%" stop-color="#5aa6f8" stop-opacity="0.74"/>
+      <stop offset="74%" stop-color="#4b92f2" stop-opacity="0.62"/>
+      <stop offset="100%" stop-color="#c5e2ff" stop-opacity="0.2"/>
+    </radialGradient>
+    <radialGradient id="violet" cx="56%" cy="56%" r="72%">
+      <stop offset="0%" stop-color="#f7f2ff" stop-opacity="0.5"/>
+      <stop offset="36%" stop-color="#a484f4" stop-opacity="0.72"/>
+      <stop offset="74%" stop-color="#9470ee" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#ddd2ff" stop-opacity="0.2"/>
+    </radialGradient>
+
+    <radialGradient id="bloom" cx="50%" cy="38%" r="50%">
+      <stop offset="0%" stop-color="#fffdf8" stop-opacity="1"/>
+      <stop offset="16%" stop-color="#fff0ea" stop-opacity="0.9"/>
+      <stop offset="40%" stop-color="#ffb3d2" stop-opacity="0.78"/>
+      <stop offset="70%" stop-color="#ffd0e6" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#ffd5e8" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="lensCyan" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.75"/>
+      <stop offset="40%" stop-color="#e7fff8" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="lensLilac" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.7"/>
+      <stop offset="42%" stop-color="#f4e9ff" stop-opacity="0.32"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="lensPink" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#fff8fb" stop-opacity="0.85"/>
+      <stop offset="46%" stop-color="#ffc4dc" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#ffd6e8" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="aura" x="-90%" y="-90%" width="280%" height="280%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="54"/>
+    </filter>
+    <filter id="rim" x="-40%" y="-40%" width="180%" height="180%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <mask id="topDisc" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">
+      <circle cx="512" cy="378" r="252" fill="#fff"/>
+    </mask>
+    <mask id="leftDisc" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">
+      <circle cx="370" cy="624" r="252" fill="#fff"/>
+    </mask>
+    <mask id="rightDisc" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">
+      <circle cx="654" cy="624" r="252" fill="#fff"/>
+    </mask>
+  </defs>
+
+  <rect width="1024" height="1024" fill="#f7f8fc"/>
+
+  <g filter="url(#aura)">
+    <circle cx="512" cy="378" r="236" fill="#49d8c4" opacity="0.85"/>
+    <circle cx="370" cy="624" r="236" fill="#3d98ff" opacity="0.8"/>
+    <circle cx="654" cy="624" r="236" fill="#9474f4" opacity="0.8"/>
+  </g>
+
+  <circle cx="512" cy="378" r="252" fill="url(#mint)"/>
+  <circle cx="370" cy="624" r="252" fill="url(#blue)"/>
+  <circle cx="654" cy="624" r="252" fill="url(#violet)"/>
+
+  <g mask="url(#topDisc)">
+    <g mask="url(#leftDisc)">
+      <ellipse cx="440" cy="492" rx="160" ry="140" fill="url(#lensCyan)"/>
+    </g>
+  </g>
+  <g mask="url(#topDisc)">
+    <g mask="url(#rightDisc)">
+      <ellipse cx="584" cy="492" rx="160" ry="140" fill="url(#lensLilac)"/>
+    </g>
+  </g>
+  <g mask="url(#leftDisc)">
+    <g mask="url(#rightDisc)">
+      <ellipse cx="512" cy="630" rx="170" ry="210" fill="url(#lensPink)"/>
+    </g>
+  </g>
+  <g mask="url(#topDisc)">
+    <g mask="url(#leftDisc)">
+      <g mask="url(#rightDisc)">
+        <ellipse cx="512" cy="518" rx="168" ry="188" fill="url(#bloom)"/>
+      </g>
+    </g>
+  </g>
+
+  <g fill="none" stroke="#ffffff" filter="url(#rim)" opacity="0.9">
+    <circle cx="512" cy="378" r="252" stroke-width="3.2"/>
+    <circle cx="370" cy="624" r="252" stroke-width="3.2"/>
+    <circle cx="654" cy="624" r="252" stroke-width="3.2"/>
+  </g>
+  <g fill="none" stroke="#ffffff" stroke-width="1.6">
+    <circle cx="512" cy="378" r="252"/>
+    <circle cx="370" cy="624" r="252"/>
+    <circle cx="654" cy="624" r="252"/>
+  </g>
+</svg>
