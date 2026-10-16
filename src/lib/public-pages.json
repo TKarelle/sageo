@@ -1,0 +1,8 @@
+[
+  { "path": "/", "changeFrequency": "weekly", "priority": 1 },
+  { "path": "/articles", "changeFrequency": "monthly", "priority": 0.7 },
+  { "path": "/methode-sageo", "changeFrequency": "monthly", "priority": 0.8 },
+  { "path": "/qui-fait-sageo", "changeFrequency": "monthly", "priority": 0.8 },
+  { "path": "/mentions-legales", "changeFrequency": "yearly", "priority": 0.3 },
+  { "path": "/politique-confidentialite", "changeFrequency": "yearly", "priority": 0.3 }
+]

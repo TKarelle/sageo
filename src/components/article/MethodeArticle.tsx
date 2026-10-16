@@ -45,8 +45,8 @@ export function MethodeArticle() {
       </p>
       <p>
         Traiter ces trois couches comme des chantiers séparés rate le
-        parcours. Une page bien placée dans Google peut ne jamais être citée
-        si sa réponse est noyée. Un texte réécrit seulement pour « sonner
+        parcours. Une page bien placée dans Google reste peu utile si sa
+        réponse est noyée. Un texte réécrit seulement pour « sonner
         expert » peut, à l’inverse, perdre les mots de la question et sortir
         dès la récupération.
       </p>
@@ -56,6 +56,10 @@ export function MethodeArticle() {
         ces noms : être trouvé, être retenu, être cité. Le détail opérationnel
         de l’audit est sur l’accueil, dans{" "}
         <Link href="/#score">les quatre dimensions du score SAGEO</Link>.
+      </p>
+      <p>
+        <Link href="/qui-fait-sageo">Qui fait la méthode SAGEO</Link> nomme
+        l’autrice, Karelle, et l’éditeur, Kopio, pour les sites web en France.
       </p>
 
       <h2>Ce que mesure SAGEO Arena</h2>
@@ -81,8 +85,7 @@ export function MethodeArticle() {
       <div className="article-note">
         <p>
           Ces chiffres décrivent cette expérience, pas le fonctionnement
-          interne de ChatGPT. Une page peut suivre la méthode et ne jamais
-          être citée.
+          interne de ChatGPT.
         </p>
       </div>
 
@@ -291,17 +294,18 @@ export function MethodeArticle() {
         </li>
       </ol>
 
-      <h2>Ce que la méthode ne promet pas</h2>
+      <h2>De l’expérience à la pratique</h2>
       <p>
-        SAGEO Arena n’est pas une fenêtre sur ChatGPT, Gemini ou Copilot. Le
-        récupérateur, le re-classeur et le générateur y sont choisis par les
-        auteurs. Les +22&nbsp;% et les +2,72 positions ne se transportent pas
-        à un site réel sans nouvelle mesure.
+        SAGEO Arena décrit un banc d’essai : récupération, re-classement, puis
+        génération. Les +22&nbsp;% et les +2,72 positions décrivent cette
+        expérience. Kopio en tire une façon de travailler un site : partir des
+        requêtes de ChatGPT, les lire avec l’extension, puis auditer la page.
       </p>
       <p>
-        Kopio utilise le sigle pour une méthode de travail, pas pour garantir
-        une place dans une réponse. Le score affiché sur l’accueil est un
-        exemple d’audit, pas une prédiction.
+        L’extension affiche les sous-requêtes accessibles après une question.
+        L’audit relit title, réponses directes, entités et priorités. Le
+        détail est dans{" "}
+        <Link href="/qui-fait-sageo">Qui fait la méthode SAGEO</Link>.
       </p>
 
       <h2>À retenir</h2>

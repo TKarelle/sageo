@@ -63,8 +63,8 @@ export default function MentionsLegalesPage() {
         <p className="mt-3 text-slate-500">
           SAGEO (Search-Augmented Generative Engine Optimization) est la
           méthode de {LEGAL.editor}, par Karelle. Elle relie le SEO, l&apos;AEO
-          et le GEO pour qu&apos;une page soit trouvée, comprise, puis
-          éventuellement citée. Une citation n&apos;est pas garantie.
+          et le GEO : partir des requêtes de ChatGPT, les lire avec
+          l&apos;extension, puis auditer la page.
         </p>
       </section>
 

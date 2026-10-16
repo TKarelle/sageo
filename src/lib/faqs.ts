@@ -8,7 +8,7 @@ export const FAQS: FaqItem[] = [
   {
     question: "Qu’est-ce que la visibilité sur ChatGPT ?",
     answer:
-      "C’est la possibilité qu’un site, une marque ou un contenu soit mentionné ou utilisé comme source dans une réponse. Cela dépend de nombreux facteurs et ne peut pas être garanti.",
+      "C’est la possibilité qu’un site, une marque ou un contenu soit mentionné ou utilisé comme source dans une réponse. SAGEO part des questions posées à ChatGPT pour rendre cette présence plus lisible.",
   },
   {
     question: "Comment être cité par ChatGPT ?",
@@ -37,9 +37,9 @@ export const FAQS: FaqItem[] = [
       "Non. Elle ne détecte que certaines données accessibles lorsqu’elles sont disponibles. Les résultats ne sont pas exhaustifs.",
   },
   {
-    question: "L’utilisation de SAGEO garantit-elle une citation ?",
+    question: "Par où commencer avec SAGEO ?",
     answer:
-      "Non. SAGEO aide à analyser et améliorer certains éléments de vos pages, mais aucune citation ne peut être garantie.",
+      "Par la question qu’un futur client poserait à ChatGPT. L’extension en montre les sous-requêtes. L’audit relit ensuite la page : technique, réponses directes, entités, puis les priorités.",
   },
   {
     question: "SAGEO remplace-t-il le référencement naturel ?",

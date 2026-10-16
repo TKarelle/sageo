@@ -60,7 +60,7 @@ export const SCORE_SECTION = {
   title: "Ce que l’audit analyse sur votre page",
   description:
     "L’audit lit la page sur quatre dimensions. SEO : être trouvé, via la technique, les balises et l’indexation. AEO : répondre à une question dès les premières lignes. GEO : nommer les entités, les faits et leur contexte. SAGEO réunit les trois dans une synthèse et des priorités.",
-  note: "Le score est un diagnostic indicatif, pas une prédiction de citation par ChatGPT.",
+  note: "L’audit indique quoi améliorer en premier : technique, réponses directes, entités, puis la synthèse.",
   dashboardNote:
     "Le score SAGEO est une analyse indicative, basée sur plusieurs critères. Il vous aide à identifier vos points forts et les axes d’amélioration.",
   dimensions: [

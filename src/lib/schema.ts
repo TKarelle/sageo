@@ -6,6 +6,12 @@
 
 import { EXTENSION, HERO, METHOD } from "@/lib/content/landing";
 import { ARTICLE, ARTICLE_FAQS } from "@/lib/content/methode-article";
+import {
+  ARTICLES_INDEX,
+  ARTICLES_INDEX_FAQS,
+  QUI_FAIT,
+  QUI_FAIT_FAQS,
+} from "@/lib/content/qui-fait-sageo";
 import { FAQS } from "@/lib/faqs";
 import {
   HOME_URL,
@@ -230,8 +236,21 @@ export function getLegalPageJsonLd(page: {
   };
 }
 
-export function getArticleJsonLd() {
-  const url = `${SITE_URL}${ARTICLE.path}`;
+type ArticleSchemaInput = {
+  path: string;
+  title: string;
+  description: string;
+  h1: string;
+  lead: string;
+  dateIso: string;
+  breadcrumb: string;
+  faqName: string;
+  faqs: readonly { question: string; answer: string }[];
+  citations: readonly string[];
+};
+
+function getArticleGraph(article: ArticleSchemaInput) {
+  const url = `${SITE_URL}${article.path}`;
 
   return {
     "@context": "https://schema.org",
@@ -239,35 +258,32 @@ export function getArticleJsonLd() {
       {
         "@type": "BlogPosting",
         "@id": `${url}#article`,
-        headline: ARTICLE.h1,
-        name: ARTICLE.title,
-        description: ARTICLE.lead,
+        headline: article.h1,
+        name: article.title,
+        description: article.lead,
         url,
         mainEntityOfPage: { "@id": `${url}#webpage` },
-        datePublished: ARTICLE.dateIso,
-        dateModified: ARTICLE.dateIso,
+        datePublished: article.dateIso,
+        dateModified: article.dateIso,
         inLanguage: "fr-FR",
         author: { "@id": `${KOPIO_URL}/#karelle` },
         publisher: { "@id": `${SITE_URL}/#organization` },
         isPartOf: { "@id": `${SITE_URL}/#website` },
         about: { "@id": `${SITE_URL}/#term-sageo` },
-        citation: [
-          "https://arxiv.org/abs/2602.12187",
-          "https://developers.google.com/search/docs/fundamentals/using-gen-ai-content",
-        ],
+        citation: [...article.citations],
       },
       {
         "@type": "WebPage",
         "@id": `${url}#webpage`,
         url,
-        name: ARTICLE.h1,
-        description: ARTICLE.description,
+        name: article.h1,
+        description: article.description,
         isPartOf: { "@id": `${SITE_URL}/#website` },
         publisher: { "@id": `${SITE_URL}/#organization` },
         author: { "@id": `${KOPIO_URL}/#karelle` },
         inLanguage: "fr-FR",
-        datePublished: ARTICLE.dateIso,
-        dateModified: ARTICLE.dateIso,
+        datePublished: article.dateIso,
+        dateModified: article.dateIso,
         breadcrumb: { "@id": `${url}#breadcrumb` },
         mainEntity: { "@id": `${url}#article` },
       },
@@ -290,7 +306,7 @@ export function getArticleJsonLd() {
           {
             "@type": "ListItem",
             position: 3,
-            name: "La méthode SAGEO",
+            name: article.breadcrumb,
             item: url,
           },
         ],
@@ -299,10 +315,10 @@ export function getArticleJsonLd() {
         "@type": "FAQPage",
         "@id": `${url}#faq`,
         url: `${url}#questions`,
-        name: "Questions sur la méthode SAGEO",
+        name: article.faqName,
         isPartOf: { "@id": `${url}#webpage` },
         author: { "@id": `${KOPIO_URL}/#karelle` },
-        mainEntity: ARTICLE_FAQS.map((item, index) => ({
+        mainEntity: article.faqs.map((item, index) => ({
           "@type": "Question",
           "@id": `${url}#question-${index + 1}`,
           name: item.question,
@@ -317,6 +333,28 @@ export function getArticleJsonLd() {
   };
 }
 
+export function getArticleJsonLd() {
+  return getArticleGraph({
+    ...ARTICLE,
+    breadcrumb: "La méthode SAGEO",
+    faqName: "Questions sur la méthode SAGEO",
+    faqs: ARTICLE_FAQS,
+    citations: [
+      "https://arxiv.org/abs/2602.12187",
+      "https://developers.google.com/search/docs/fundamentals/using-gen-ai-content",
+    ],
+  });
+}
+
+export function getQuiFaitJsonLd() {
+  return getArticleGraph({
+    ...QUI_FAIT,
+    faqName: "Questions sur l’autrice de SAGEO",
+    faqs: QUI_FAIT_FAQS,
+    citations: ["https://kopio.eu", `${SITE_URL}/methode-sageo`],
+  });
+}
+
 export function getArticlesIndexJsonLd() {
   const url = `${SITE_URL}/articles`;
   const articleUrl = `${SITE_URL}${ARTICLE.path}`;
@@ -328,27 +366,57 @@ export function getArticlesIndexJsonLd() {
         "@type": "CollectionPage",
         "@id": `${url}#webpage`,
         url,
-        name: "Articles SAGEO",
-        description:
-          "Les articles qui expliquent la méthode SAGEO de Kopio : être trouvé, retenu, puis cité.",
+        name: ARTICLES_INDEX.h1,
+        description: ARTICLES_INDEX.lead,
+        dateModified: ARTICLES_INDEX.dateIso,
+        author: { "@id": `${KOPIO_URL}/#karelle` },
         isPartOf: { "@id": `${SITE_URL}/#website` },
         publisher: { "@id": `${SITE_URL}/#organization` },
         inLanguage: "fr-FR",
         breadcrumb: { "@id": `${url}#breadcrumb` },
         mainEntity: { "@id": `${url}#list` },
+        hasPart: { "@id": `${url}#faq` },
       },
       {
         "@type": "ItemList",
         "@id": `${url}#list`,
-        name: "Articles SAGEO",
+        name: ARTICLES_INDEX.h1,
+        numberOfItems: 2,
+        itemListOrder: "https://schema.org/ItemListOrderDescending",
         itemListElement: [
           {
             "@type": "ListItem",
             position: 1,
+            name: QUI_FAIT.h1,
+            description: QUI_FAIT.description,
+            url: `${SITE_URL}${QUI_FAIT.path}`,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
             name: ARTICLE.h1,
+            description: ARTICLE.description,
             url: articleUrl,
           },
         ],
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${url}#faq`,
+        url: `${url}#questions`,
+        name: "Questions sur les articles SAGEO",
+        isPartOf: { "@id": `${url}#webpage` },
+        author: { "@id": `${KOPIO_URL}/#karelle` },
+        mainEntity: ARTICLES_INDEX_FAQS.map((item, index) => ({
+          "@type": "Question",
+          "@id": `${url}#question-${index + 1}`,
+          name: item.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: item.answer,
+            author: { "@id": `${KOPIO_URL}/#karelle` },
+          },
+        })),
       },
       {
         "@type": "BreadcrumbList",

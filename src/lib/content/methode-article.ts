@@ -2,10 +2,10 @@ export const ARTICLE = {
   path: "/methode-sageo",
   title: "Trouvé, retenu, puis cité",
   description:
-    "SAGEO, la méthode de Kopio par Karelle, relie le SEO, l’AEO et le GEO. Ce que le banc d’essai SAGEO Arena (KDD 2026) mesure vraiment, et ce qu’il ne garantit pas pour ChatGPT.",
+    "SAGEO, la méthode de Kopio par Karelle, relie le SEO, l’AEO et le GEO. Ce que le banc d’essai SAGEO Arena (KDD 2026) mesure, et comment l’extension et l’audit s’en servent.",
   h1: "Être trouvé ne suffit pas pour être cité",
   lead:
-    "SAGEO (Search-Augmented Generative Engine Optimization) est la méthode de Kopio, par Karelle. Elle organise le SEO, l’AEO et le GEO sur un même parcours : une page doit d’abord être récupérée, puis retenue, puis pouvoir être citée. Aucune citation n’est garantie.",
+    "SAGEO (Search-Augmented Generative Engine Optimization) est la méthode de Kopio, par Karelle. Elle organise le SEO, l’AEO et le GEO sur un même parcours : une page doit d’abord être récupérée, puis retenue, puis pouvoir être citée.",
   dateLabel: "15 octobre 2026",
   dateIso: "2026-10-15",
 } as const;
@@ -29,6 +29,6 @@ export const ARTICLE_FAQS = [
   {
     question: "Les résultats de SAGEO Arena s’appliquent-ils tels quels à ChatGPT ?",
     answer:
-      "Non. SAGEO Arena est un banc d’essai : récupération BM25, re-classement avec Qwen3-Reranker-4B, génération avec GPT-5-mini, et un seuil de 10 documents transmis au générateur. ChatGPT n’utilise pas forcément cette chaîne. Les chiffres décrivent cette expérience, pas une promesse de citation.",
+      "Non. SAGEO Arena est un banc d’essai : récupération BM25, re-classement avec Qwen3-Reranker-4B, génération avec GPT-5-mini, et un seuil de 10 documents transmis au générateur. ChatGPT n’utilise pas forcément cette chaîne. Les chiffres décrivent cette expérience.",
   },
 ] as const;

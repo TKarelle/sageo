@@ -29,10 +29,12 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
+        disallow: "/api/",
       },
       ...aiBots.map((userAgent) => ({
         userAgent,
         allow: "/" as const,
+        disallow: "/api/" as const,
       })),
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,
